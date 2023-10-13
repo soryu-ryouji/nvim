@@ -1,14 +1,24 @@
--- ------------- Markdown ----------
 vim.g['mkdp_auto_start'] = 0
 vim.g['mkdp_browser'] = '/usr/bin/firefox'
 vim.keymap.set('n','mm',':MarkdownPreviewToggle<CR>')
 vim.keymap.set('n','tm',':TableModeToggle<CR>')
 
+vim.keymap.set('i', ',f', '<Esc>/<++><CR>:nohlsearch<CR>c4l')
+vim.keymap.set('i', ',p', '![](<++>)<++><Esc>F[a')
+vim.keymap.set('i', ',l', '[](<++>)<++><Esc>F[a')
+vim.keymap.set('i', ',b', '****<++><Esc>F*hi')
+
+vim.keymap.set('i', ',1', "#<Space><CR><++><Esc>kA")
+vim.keymap.set('i', ',2', "##<Space><CR><++><Esc>kA")
+vim.keymap.set('i', ',3', "###<Space><CR><++><Esc>kA")
+vim.keymap.set('i', ',4', "####<Space><CR><++><Esc>kA")
+vim.keymap.set('i', ',5', "#####<Space><CR><++><Esc>kA")
+vim.keymap.set('i', ',6', "######<Space><CR><++><Esc>kA")
 
 -- ------------ Outline -------------
 local opts = {
   highlight_hovered_item = true,
-  show_guides = true,
+  show_guides = false,
   auto_preview = false,
   position = 'right',
   relative_width = true,
@@ -24,7 +34,7 @@ local opts = {
   wrap = false,
   keymaps = { -- These keymaps can be a string or a table for multiple keys
     close = {"<Esc>", "q"},
-    goto_location = "<Cr>",
+    goto_location = "<CR>",
     focus_location = "o",
     hover_symbol = "<C-space>",
     toggle_preview = "K",
@@ -39,34 +49,7 @@ local opts = {
   lsp_blacklist = {},
   symbol_blacklist = {},
   symbols = {
-    File = { icon = "", hl = "@text.uri" },
-    Module = { icon = "", hl = "@namespace" },
-    Namespace = { icon = "", hl = "@namespace" },
-    Package = { icon = "", hl = "@namespace" },
-    Class = { icon = "𝓒", hl = "@type" },
-    Method = { icon = "ƒ", hl = "@method" },
-    Property = { icon = "", hl = "@method" },
-    Field = { icon = "", hl = "@field" },
-    Constructor = { icon = "", hl = "@constructor" },
-    Enum = { icon = "ℰ", hl = "@type" },
-    Interface = { icon = "ﰮ", hl = "@type" },
-    Function = { icon = "", hl = "@function" },
     Variable = { icon = "", hl = "@constant" },
-    Constant = { icon = "", hl = "@constant" },
-    String = { icon = "𝓐", hl = "@string" },
-    Number = { icon = "#", hl = "@number" },
-    Boolean = { icon = "⊨", hl = "@boolean" },
-    Array = { icon = "", hl = "@constant" },
-    Object = { icon = "⦿", hl = "@type" },
-    Key = { icon = "🔐", hl = "@type" },
-    Null = { icon = "NULL", hl = "@type" },
-    EnumMember = { icon = "", hl = "@field" },
-    Struct = { icon = "𝓢", hl = "@type" },
-    Event = { icon = "🗲", hl = "@type" },
-    Operator = { icon = "+", hl = "@operator" },
-    TypeParameter = { icon = "𝙏", hl = "@parameter" },
-    Component = { icon = "", hl = "@function" },
-    Fragment = { icon = "", hl = "@constant" },
   },
 }
 
